@@ -1,0 +1,45 @@
+name: chatterino-tsugu
+base: core24
+version: '2.5.4'
+summary: Chat client for https://twitch.tv
+description: |
+  Chatterino is a chat client for Twitch chat. It aims to be an improved/extended version of the Twitch web chat.
+
+grade: stable
+confinement: strict
+
+platforms:
+  amd64:
+
+lint:
+  ignore:
+    - classic
+    - library
+
+parts:
+  chatterino-tsugu:
+    source: https://github.com/Chatterino/chatterino2/releases/download/v${SNAPCRAFT_PROJECT_VERSION}/Chatterino-Ubuntu-24.04.deb
+    plugin: dump
+    source-type: deb
+    stage-packages: [libc6, libstdc++6, libglx0, libopengl0, libpng16-16, libharfbuzz0b, libfreetype6, libfontconfig1, libjpeg-turbo8, libxcb-glx0, libegl1, libx11-6, libxkbcommon0, libx11-xcb1, libxkbcommon-x11-0, libxcb-cursor0, libxcb-icccm4, libxcb-image0, libxcb-keysyms1, libxcb-randr0, libxcb-render-util0, libxcb-shm0, libxcb-sync1, libxcb-xfixes0, libxcb-render0, libxcb-shape0, libxcb-xkb1, libxcb1, libbrotli1, libglib2.0-0, zlib1g, libicu74, libpcre2-16-0, libssl3, libgraphite2-3, libexpat1, libuuid1, libxcb-util1, libxau6, libxdmcp6, libffi8, libmount1, libnotify4, libselinux1, libpcre3, libbsd0, libblkid1, libpcre2-8-0, libmd0, libproxy1v5]
+    
+apps:
+  chatterino-tsugu:
+    command: usr/bin/chatterino
+    extensions: [gnome]
+    environment:
+      HOME: "$SNAP_USER_DATA"
+      TMPDIR: "$SNAP_USER_DATA/tmp"
+      DISABLE_WAYLAND: 1
+      LD_LIBRARY_PATH: "$SNAP/usr/lib/x86_64-linux-gnu:$SNAP/lib/x86_64-linux-gnu:$SNAP/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/libproxy:$LD_LIBRARY_PATH"
+    plugs:
+      - network
+      - network-bind
+      - home
+      - desktop
+      - desktop-legacy
+      - x11
+      - wayland
+      - unity7
+      - audio-playback
+
