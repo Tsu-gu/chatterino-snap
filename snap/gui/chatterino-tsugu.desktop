@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Chatterino
+Exec=chatterino-tsugu
+Icon=${SNAP}/meta/gui/chatterino-tsugu.svg
+Comment=Twitch chat client
+Terminal=false
+Type=Application
+MimeType=x-content/unix-software;
