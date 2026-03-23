@@ -1,6 +1,6 @@
 name: chatterino-tsugu
 base: core24
-version: '2.5.4'
+version: '2.5.5'
 summary: Chat client for https://twitch.tv
 description: |
   Chatterino is a chat client for Twitch chat. It aims to be an improved/extended version of the Twitch web chat.
